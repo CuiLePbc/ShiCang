@@ -13,15 +13,15 @@ import kotlinx.android.synthetic.main.activity_loding.*
  */
 class LodingActivity : AppCompatActivity(){
 
-    private lateinit var lodingViewModel: LodingViewModel
+    private val lodingViewModel: LodingViewModel by lazy {
+        ViewModelProviders.of(this).get(LodingViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loding)
-
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        lodingViewModel = ViewModelProviders.of(this).get(LodingViewModel::class.java)
         lodingViewModel.poem.observe(this, Observer<Poem> {
             lodingTitle.text = it.title
             lodingAuthor.text = it.author
