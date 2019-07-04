@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:background="#0099cc"
+              android:theme="@android:style/Theme.Material.NoActionBar"
+              tools:context=".LodingActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView
+            android:id="@+id/lodingTitle"
+            android:text="诗藏"
+            android:textAppearance="@android:style/TextAppearance.Material.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_orange_light"
+            android:fontFamily="@font/rui_zi_yun_zi_ku_xing_kai_gb_2"/>
+
+    <TextView
+            android:id="@+id/lodingAuthor"
+            android:text="崔乐"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@android:style/TextAppearance.Material.Large.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_orange_light"
+            android:fontFamily="@font/rui_zi_yun_zi_ku_xing_kai_gb_2"/>
+
+    <TextView
+            android:id="@+id/lodingContent"
+            android:layout_marginTop="10dp"
+            android:text="最是你异一低头的温柔"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_orange_light"
+            android:fontFamily="@font/rui_zi_yun_zi_ku_xing_kai_gb_2"/>
+
+</LinearLayout>

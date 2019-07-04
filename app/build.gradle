@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.cuile.shicang"
+        minSdkVersion 26
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion = '29.0.0 rc2'
+}
+
+dependencies {
+
+    def lifecycle_version = "2.0.0"
+    def appcompat_version = "1.1.0-beta01"
+    def ktx_version = "1.2.0-alpha02"
+    def viewmodel_ktx_version = "2.2.0-alpha01"
+    def retrofit2_version = "2.6.0"
+    def dagger2_version = "2.23.2"
+    def gson_version = "2.8.5"
+    def kotlinx_coroutines_version = "1.3.0-M1"
+
+    def test_ext_version = "1.1.2-alpha01"
+    def test_espresso_version = "3.3.0-alpha01"
+
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx_version"
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+
+    implementation "com.google.code.gson:gson:$gson_version"
+
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version"
+
+
+    testImplementation 'junit:junit:4.13-beta-2'
+    androidTestImplementation "androidx.test.ext:junit:$test_ext_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_version"
+}
