@@ -1,17 +1,26 @@
 package com.cuile.shicang
 
 import androidx.lifecycle.*
+import dagger.internal.DaggerCollections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class LodingViewModel : ViewModel() {
 
-    private val poemRepository: PoemRepository = PoemRepository()
+    @Inject
+    lateinit var poemRepository: PoemRepository
 
-    val poem: MutableLiveData<Poem> = MutableLiveData<Poem>()
+    @Inject
+    lateinit var poem: MutableLiveData<Poem>
 
     init {
+
+        DaggerLodingComponent
+            .create()
+            .inject(this)
+
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 poem.postValue(poemRepository.getPoem())

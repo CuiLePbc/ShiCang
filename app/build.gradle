@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -26,9 +28,9 @@ android {
 dependencies {
 
     def lifecycle_version = "2.0.0"
-    def appcompat_version = "1.1.0-beta01"
+    def appcompat_version = "1.1.0-rc01"
     def ktx_version = "1.2.0-alpha02"
-    def viewmodel_ktx_version = "2.2.0-alpha01"
+    def viewmodel_ktx_version = "2.2.0-alpha02"
     def retrofit2_version = "2.6.0"
     def dagger2_version = "2.23.2"
     def gson_version = "2.8.5"
@@ -53,7 +55,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
 
     implementation "com.google.dagger:dagger:$dagger2_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
 
     implementation "com.google.code.gson:gson:$gson_version"
 
