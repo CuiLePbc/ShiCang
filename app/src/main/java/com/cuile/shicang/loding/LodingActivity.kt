@@ -1,10 +1,14 @@
-package com.cuile.shicang
+package com.cuile.shicang.loding
 
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.room.Room
+import com.cuile.shicang.AppDataBase
+import com.cuile.shicang.Poem
+import com.cuile.shicang.PoemRepository
+import com.cuile.shicang.R
 import kotlinx.android.synthetic.main.activity_loding.*
 
 /**
@@ -14,7 +18,14 @@ import kotlinx.android.synthetic.main.activity_loding.*
 class LodingActivity : AppCompatActivity(){
 
     private val lodingViewModel: LodingViewModel by lazy {
-        ViewModelProviders.of(this).get(LodingViewModel::class.java)
+        LodingViewModelFactory(
+            PoemRepository.getInstance(
+                Room.databaseBuilder(
+                    applicationContext,
+                    AppDataBase::class.java,
+                    "shicang").build().poemDao()
+            )
+        ).create(LodingViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
