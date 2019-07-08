@@ -7,7 +7,7 @@
               android:gravity="center"
               android:background="#0099cc"
               android:theme="@android:style/Theme.Material.NoActionBar"
-              tools:context=".loding.LodingActivity">
+              tools:context=".ui.loding.LodingActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,

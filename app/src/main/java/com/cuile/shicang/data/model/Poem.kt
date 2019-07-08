@@ -1,4 +1,4 @@
-package com.cuile.shicang
+package com.cuile.shicang.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

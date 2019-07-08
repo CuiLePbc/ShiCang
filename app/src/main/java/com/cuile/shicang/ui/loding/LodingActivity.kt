@@ -1,15 +1,17 @@
-package com.cuile.shicang.loding
+package com.cuile.shicang.ui.loding
 
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.room.Room
-import com.cuile.shicang.AppDataBase
-import com.cuile.shicang.Poem
-import com.cuile.shicang.PoemRepository
+import com.cuile.shicang.data.db.AppDataBase
+import com.cuile.shicang.data.model.Poem
+import com.cuile.shicang.data.PoemRepository
 import com.cuile.shicang.R
+import com.cuile.shicang.dagger.loding.inject
 import kotlinx.android.synthetic.main.activity_loding.*
+import javax.inject.Inject
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -17,21 +19,16 @@ import kotlinx.android.synthetic.main.activity_loding.*
  */
 class LodingActivity : AppCompatActivity(){
 
-    private val lodingViewModel: LodingViewModel by lazy {
-        LodingViewModelFactory(
-            PoemRepository.getInstance(
-                Room.databaseBuilder(
-                    applicationContext,
-                    AppDataBase::class.java,
-                    "shicang").build().poemDao()
-            )
-        ).create(LodingViewModel::class.java)
-    }
+    @Inject
+    lateinit var lodingViewModel: LodingViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loding)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+        inject(this)
 
         lodingViewModel.poem.observe(this, Observer<Poem> {
             lodingTitle.text = it.title

@@ -1,10 +1,10 @@
-package com.cuile.shicang.loding
+package com.cuile.shicang.ui.loding
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cuile.shicang.Poem
-import com.cuile.shicang.PoemRepository
+import com.cuile.shicang.data.PoemRepository
+import com.cuile.shicang.data.model.Poem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

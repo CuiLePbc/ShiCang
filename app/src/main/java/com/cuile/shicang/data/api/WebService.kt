@@ -1,5 +1,6 @@
-package com.cuile.shicang
+package com.cuile.shicang.data.api
 
+import com.cuile.shicang.data.model.Poem
 import retrofit2.http.GET
 
 interface WebService {

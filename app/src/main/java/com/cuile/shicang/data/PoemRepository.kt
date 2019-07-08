@@ -1,28 +1,19 @@
-package com.cuile.shicang
+package com.cuile.shicang.data
 
-import kotlinx.coroutines.Dispatchers
+import com.cuile.shicang.data.api.WebService
+import com.cuile.shicang.data.db.PoemDao
+import com.cuile.shicang.data.model.Poem
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
-class PoemRepository private constructor(private val poemDao: PoemDao){
+class PoemRepository private constructor(private val poemDao: PoemDao, private val webService: WebService){
     companion object {
         @Volatile private var instance: PoemRepository? = null
-        fun getInstance(poemDao: PoemDao) =
+        fun getInstance(poemDao: PoemDao, webService: WebService) =
             instance ?: synchronized(this) {
-                instance ?: PoemRepository(poemDao).also { instance = it }
+                instance
+                    ?: PoemRepository(poemDao, webService).also { instance = it }
             }
-    }
-
-
-    private val webService: WebService by lazy {
-        Retrofit.Builder()
-            .baseUrl("http://my-json-server.typicode.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(WebService::class.java)
     }
 
     suspend fun refreshPoem() {

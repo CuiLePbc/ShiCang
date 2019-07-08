@@ -1,6 +1,7 @@
-package com.cuile.shicang
+package com.cuile.shicang.data.db
 
 import androidx.room.*
+import com.cuile.shicang.data.model.Poem
 
 @Dao
 interface PoemDao {
