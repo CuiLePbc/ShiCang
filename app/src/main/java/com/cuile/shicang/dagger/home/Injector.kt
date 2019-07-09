@@ -1,18 +1,18 @@
-package com.cuile.shicang.dagger.loding
+package com.cuile.shicang.dagger.home
 
 import com.cuile.shicang.dagger.CoreComponent
 import com.cuile.shicang.dagger.DaggerCoreComponent
-import com.cuile.shicang.ui.loding.LodingActivity
+import com.cuile.shicang.ui.home.HomeFragment
 
 private val coreComponent: CoreComponent by lazy {
     DaggerCoreComponent.builder().build()
 }
 
-fun inject(activity: LodingActivity) {
+fun inject(fragment: HomeFragment) {
 
-    DaggerLodingComponent.builder()
+    DaggerHomeComponent.builder()
         .coreCompnent(coreComponent)
-        .lodingModule(LodingModule(activity))
+        .homeModule(HomeFragmentModule(fragment))
         .build()
-        .inject(activity)
+        .inject(fragment)
 }

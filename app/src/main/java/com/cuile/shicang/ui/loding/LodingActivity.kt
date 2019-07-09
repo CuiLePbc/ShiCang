@@ -1,5 +1,6 @@
 package com.cuile.shicang.ui.loding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.cuile.shicang.data.model.Poem
 import com.cuile.shicang.data.PoemRepository
 import com.cuile.shicang.R
 import com.cuile.shicang.dagger.loding.inject
+import com.cuile.shicang.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_loding.*
 import javax.inject.Inject
 
@@ -40,6 +42,15 @@ class LodingActivity : AppCompatActivity(){
                 .replace(".", ".\n")
 
             lodingContent.text = poemContent
+        })
+
+        lodingViewModel.showStatus.observe(this, Observer<Boolean> {
+            if (it) {
+                startActivity(Intent(this, MainActivity::class.java))
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                finish()
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            }
         })
     }
 

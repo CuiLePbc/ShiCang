@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Component(modules = [CoreDataModule::class])
+@Singleton
 interface CoreComponent {
 
     @Component.Builder

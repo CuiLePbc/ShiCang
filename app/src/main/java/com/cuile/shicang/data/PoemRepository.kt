@@ -32,6 +32,8 @@ class PoemRepository private constructor(private val poemDao: PoemDao, private v
             val newPoem = webService.getPoem()
             poemDao.insertPoem(newPoem)
             allPoems = listOf(newPoem)
+        } else {
+
         }
 
         return allPoems[0]
