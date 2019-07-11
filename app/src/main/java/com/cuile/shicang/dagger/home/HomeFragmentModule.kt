@@ -1,5 +1,6 @@
 package com.cuile.shicang.dagger.home
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.cuile.shicang.ui.home.HomeFragment
@@ -9,13 +10,13 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class HomeFragmentModule(private val fragment: HomeFragment) {
+class HomeFragmentModule(private val homeFragment: HomeFragment) {
 
     @Provides
-    fun provideFragmentActivity(): FragmentActivity = fragment.requireActivity()
+    fun provideFragment(): Fragment = homeFragment
 
     @Provides
-    fun provideHomeFragmentViewModel(activity: FragmentActivity): HomeFragmentViewModel =
-        ViewModelProviders.of(activity, HomeFragmentViewModelFactory()).get(HomeFragmentViewModel::class.java)
+    fun provideHomeFragmentViewModel(fragment: Fragment, homeFragmentViewModelFactory: HomeFragmentViewModelFactory): HomeFragmentViewModel =
+        ViewModelProviders.of(fragment, homeFragmentViewModelFactory).get(HomeFragmentViewModel::class.java)
 
 }
