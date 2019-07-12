@@ -10,4 +10,18 @@
             android:name="com.cuile.shicang.ui.home.HomeFragment"
             tools:layout="@layout/home_fragment"
             android:label="HomeFragment" />
+    <fragment
+            android:id="@+id/authListFragment"
+            android:name="com.cuile.shicang.ui.AuthListFragment"
+            android:label="fragment_auth_list"
+            tools:layout="@layout/fragment_auth_list" >
+        <action
+                android:id="@+id/action_authListFragment_to_poemListFragment"
+                app:destination="@id/poemListFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/poemListFragment"
+            android:name="com.cuile.shicang.ui.PoemListFragment"
+            android:label="fragment_poem_list"
+            tools:layout="@layout/fragment_poem_list" />
 </navigation>

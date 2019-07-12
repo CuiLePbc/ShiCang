@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/first" android:title="first" android:checkable="true" />
-    <item android:id="@+id/second" android:title="second" android:checkable="true" />
-    <item android:id="@+id/third" android:title="third" android:checkable="true" />
+    <item android:id="@+id/homeFragment" android:title="Home" android:checkable="true" />
+    <item android:id="@+id/authListFragment" android:title="Authors" android:checkable="true" />
+    <item android:id="@+id/poemListFragment" android:title="Poems" android:checkable="true" />
 </menu>
